@@ -1,0 +1,402 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+
+}
+
+html,body{
+    overflow-x: hidden; 
+    
+}
+
+
+
+
+/* ########   utility class ########## */
+
+.obj-width{
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+
+
+
+/* ############  NAVBAR STYLING ######## */
+
+
+
+
+/* Base navbar styling */
+.navbar {
+    height: 50vh;
+    position: relative;
+    overflow: hidden;
+    /* Ensure the navbar content stays on top of the background image */
+    z-index: 1;
+}
+
+.navbar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1; /* Place behind the navbar content */
+    animation: backgroundImageAnimation 50s infinite;
+    transition: background-image 0.5s ease-in-out; /* Smooth transition for background image change */
+}
+
+/* Pause the animation on hover to freeze the image */
+.navbar:hover::before {
+    animation-play-state: paused;
+}
+
+/* Keyframes for background image animation */
+@keyframes backgroundImageAnimation {
+    0% {
+        background-image: url('./BG IMAGES/pexels-darrel-und-217939-1242286.jpg');
+    }
+    10% {
+        background-image: url('./BG IMAGES/pexels-iriser-1408221.jpg');
+    }
+    20% {
+        background-image: url('./BG IMAGES/pexels-fotios-photos-1083822.jpg');
+    }
+    30% {
+        background-image: url('./BG IMAGES/pexels-asadphoto-3293148.jpg');
+    }
+    40% {
+        background-image: url('./BG IMAGES/pexels-david-bartus-43782-1166209.jpg');
+    }
+    50% {
+        background-image: url('./BG IMAGES/pexels-thatguycraig000-1563355.jpg');
+    }
+    60% {
+        background-image: url('./BG IMAGES/pexels-karolina-grabowska-4622892.jpg');
+    }
+    70% {
+        background-image: url('./BG IMAGES/pexels-evie-shaffer-1259279-4004374.jpg');
+    }
+    80% {
+        background-image: url('./BG IMAGES/pexels-scottwebb-1029604.jpg');
+    }
+    90% {
+        background-image: url('./BG IMAGES/pexels-shottrotter-723880.jpg');
+    }
+    100% {
+        background-image: url('./BG IMAGES/pexels-darrel-und-217939-1242286.jpg');
+    }
+}
+
+
+.header{
+
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+
+    
+}
+
+.nav-link {
+    display: inline-block;
+    position: relative;
+ 
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #ffffff;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+
+.nav-link {
+    color: #ffffff; 
+    text-decoration: none; 
+    font-weight: 600;
+}
+
+/* #############    DROP DOWN MENU   ############# */
+
+
+
+
+.nav-item {
+    position: relative; 
+}
+
+.dropdown-menu {
+    display: none; 
+    position: absolute; 
+    top: 100%; 
+    left: 0;
+    background-color: #ffffff; 
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0; 
+    border-radius: 5px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    width: 150px;
+    z-index: 1000;
+
+}
+
+.dropdown-menu li {
+    margin: 0; 
+}
+
+.dropdown-menu a {
+    display: block; 
+    padding: 10px; 
+    color: rgb(0, 0, 0); 
+    text-decoration: none; 
+    font-size: 0.8rem;
+    font-weight: 600; 
+}
+
+.dropdown-menu a:hover {
+    background-color: #dbdee0; /* Change background on hover */
+}
+
+/* Show dropdown menu on hover */
+.nav-item:hover .dropdown-menu {
+    display: block; /* Show the dropdown menu when hovering over the nav-item */
+}
+
+
+
+
+
+
+
+/* ############################################### */
+
+
+
+.logo img {
+    width: 100px; 
+    height: auto; 
+    margin: 5px 20px;
+}
+
+
+
+
+
+.header-items {
+    width: 30%;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around; 
+}
+
+
+
+.navbar h1{
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+
+    margin-top: 10rem;
+}
+
+
+.navbar .input-div {
+
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin-top: 3rem;
+}
+
+ #search-input{
+
+    padding: 10px 20px;
+    border: none;
+    font-size: 18px;
+    color: #333;
+    width: 400px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    
+}
+
+#search-input:focus{
+    outline: none;
+}
+
+#search-button{
+
+    border: none;
+    outline: none;
+    width: 80px;
+    padding: 10px;
+    background-color: #949596;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+
+
+#search-button:hover {
+    background-color: #515151; 
+}
+
+#search-button:active {
+    background-color: #000000; 
+}
+
+
+
+
+
+/* ###########   SECTION SEARCH RESULTS STYLING    ########## */
+
+
+.search-results{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 5rem auto;
+    
+}
+
+.search-result{
+    margin-bottom: 60px;
+    width: 30%;
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: 0  0 6px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    
+}
+
+.search-result img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.2s ease-in-out;
+}
+
+
+.search-result:hover img{
+    opacity: 0.8;
+}
+
+.search-result a{
+    font-size: 20px;
+    text-decoration: none;
+    color: #000000;
+    display: block;
+    padding: 10px;
+    text-transform: capitalize;
+}
+
+#show-more-button{
+    border: none;
+    outline: none;
+    width: 100px;
+    padding: 10px;
+    background-color: #949596;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-weight: 600;
+    text-align: center;
+    display: block;
+    margin: 30px auto;
+    transition: background-color 0.3s ease;
+
+    display: none;
+}
+
+#show-more-button:hover {
+    background-color: #515151; 
+}
+
+#show-more-button:active {
+    background-color: #000000; 
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .search-result{
+        width: 45%;
+    }
+
+    .search-results{
+        padding: 20px;
+    }
+
+    .header-items{
+        font-size: small;
+        font-weight: 500;
+        width: 60%;
+    }
+    
+    .navbar h1{
+        margin-top: 3rem;
+        
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .search-result{
+        width: 100%;
+    }
+    
+    .logo img {
+        width: 60px;
+        height: auto;
+        margin: 5px 20px;
+    }
+
+    .header-items{
+        font-size: small;
+        font-weight: 500;
+        width: 60%;
+    }
+
+    .navbar h1{
+        margin-top: 3rem;
+        
+        font-size: 1.8rem;
+    }
+
+    #search-input{
+        width: 200px;
+        font-size: small;
+    }
+
+
+}

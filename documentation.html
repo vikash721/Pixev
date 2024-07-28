@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixev Documentation</title>
+    <link rel="stylesheet" href="documentation.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <header class="header obj-width">
+        <div class="logo">
+          <a class="logo-link" href="index.html">
+            <img src="./UI IMAGES/logo.png" alt="" />
+          </a>
+        </div>
+
+        <ul class="header-items">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Categories</a>
+            <ul class="dropdown-menu">
+              <li><a class="category" href="index.html">Go to home</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link" href="">Documentation</a></li>
+        </ul>
+      </header>
+
+      <h1>PIXEV DOCUMENTATION</h1>
+    </nav>
+
+    <main class="doc-main">
+      <section class="overview">
+        <h2>Overview</h2>
+        <p>
+          <strong>Pixev</strong> is a web application designed for searching and
+          displaying high-quality images using the Unsplash API. Users can
+          search for images based on categories or specific keywords and view
+          detailed results in a clean, user-friendly interface. This project
+          demonstrates the use of the Unsplash API for fetching images and
+          showcases the integration of various web technologies.
+        </p>
+      </section>
+
+      <section class="features">
+        <h2>Features</h2>
+        <ul>
+          <li>
+            <strong>Search Functionality:</strong> Allows users to search for
+            images based on keywords.
+          </li>
+          <li>
+            <strong>Category Filtering:</strong> Provides predefined categories
+            to filter images easily.
+          </li>
+          <li>
+            <strong>Dynamic Results:</strong> Displays search results with image
+            previews and links.
+          </li>
+          <li>
+            <strong>Pagination:</strong> Allows users to load more results with
+            a "Show more" button.
+          </li>
+          <li>
+            <strong>Responsive Design:</strong> Ensures a seamless experience
+            across different devices.
+          </li>
+        </ul>
+      </section>
+
+      <section class="api">
+        <h2>API Used</h2>
+        <h3>Unsplash API</h3>
+        <ul>
+          <li>
+            <strong>Endpoint:</strong>
+            <code>https://api.unsplash.com/search/photos</code>
+          </li>
+          <li>
+            <strong>Documentation:</strong>
+            <a
+              class="visit-link"
+              href="https://unsplash.com/developers"
+              target="_blank"
+              >Unsplash API Documentation</a
+            >
+          </li>
+          <li><strong>Features:</strong></li>
+          <ul>
+            <li>Search for photos based on user input.</li>
+            <li>Retrieve image URLs and metadata.</li>
+            <li>Handle pagination for fetching more results.</li>
+          </ul>
+        </ul>
+        <h4>Example API Request</h4>
+        <pre><code>GET https://api.unsplash.com/search/photos?page=1&query=Nature&client_id=YOUR_ACCESS_KEY</code></pre>
+        <p>Replace <code>YOUR_ACCESS_KEY</code> with your Unsplash API key.</p>
+      </section>
+
+      <section class="how-it-works">
+        <h2>How It Works</h2>
+        <ol>
+          <li>
+            <strong>User Input:</strong> Users enter a search term or select a
+            category.
+          </li>
+          <li>
+            <strong>API Call:</strong> The application makes a request to the
+            Unsplash API with the search term.
+          </li>
+          <li>
+            <strong>Display Results:</strong> Results are displayed in a grid
+            layout with images and links.
+          </li>
+          <li>
+            <strong>Pagination:</strong> Users can load more results by clicking
+            the "Show more" button.
+          </li>
+        </ol>
+      </section>
+
+      <section class="code-snippets">
+        <h2>Code Snippets</h2>
+        <h3>HTML Structure</h3>
+        <pre><code>&lt;nav class="navbar"&gt;
+    &lt;header class="header obj-width"&gt;
+        &lt;!-- Logo and Navigation Links --&gt;
+    &lt;/header&gt;
+    &lt;h1&gt;Search for the perfect image to match your needs.&lt;/h1&gt;
+    &lt;form class="input-div"&gt;
+        &lt;input type="text" id="search-input" placeholder="Search for images"&gt;
+        &lt;button id="search-button"&gt;Search&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/nav&gt;
+&lt;div class="search-results"&gt;
+    &lt;!-- Search results will be dynamically inserted here --&gt;
+&lt;/div&gt;
+&lt;button id="show-more-button"&gt;Show more&lt;/button&gt;
+</code></pre>
+        <h3>JavaScript for Fetching Images</h3>
+        <pre><code>const accessKey = "YOUR_ACCESS_KEY";
+const button = document.getElementById("search-button");
+const inputEl = document.getElementById("search-input");
+const searchResults = document.querySelector(".search-results");
+const showMore = document.getElementById("show-more-button");
+
+let inputData = "";
+let page = 1;
+
+async function searchImages(inputData) {
+    const url = \`https://api.unsplash.com/search/photos?page=${page}&query=${inputData}&client_id=${accessKey}\`;
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        const results = data.results;
+
+        if (page === 1) {
+            searchResults.innerHTML = "";
+        }
+
+        results.map((result) => {
+            const imageWrapper = document.createElement("div");
+            imageWrapper.classList.add("search-result");
+
+            const image = document.createElement("img");
+            image.src = result.urls.small;
+            image.alt = result.alt_description;
+
+            const imageLink = document.createElement("a");
+            imageLink.target = "_blank";
+            imageLink.textContent = result.alt_description;
+
+            imageWrapper.appendChild(image);
+            imageWrapper.appendChild(imageLink);
+            searchResults.appendChild(imageWrapper);
+        });
+
+        page++;
+        if (page > 1) {
+            showMore.style.display = "block";
+        }
+    } catch (error) {
+        console.error("An error occurred:", error);
+        searchResults.innerHTML = "<p>Sorry, something went wrong. Please try again later.</p>";
+        showMore.style.display = "none";
+    }
+}
+
+button.addEventListener("click", (event) => {
+    event.preventDefault();
+    inputData = inputEl.value.trim();
+    if (inputData === "") {
+        alert("Please enter something.");
+        return;
+    }
+    page = 1;
+    searchImages(inputData);
+});
+
+showMore.addEventListener("click", () => {
+    if (inputData) {
+        searchImages(inputData);
+    } else {
+        alert("Please enter something.");
+    }
+});
+</code></pre>
+      </section>
+
+      <section class="references">
+        <h2>References</h2>
+        <ul>
+          <li>
+            <strong>Unsplash API:</strong>
+            <a
+              class="visit-link"
+              href="https://unsplash.com/developers"
+              target="_blank"
+              >Unsplash API Documentation</a
+            >
+          </li>
+        </ul>
+      </section>
+
+      <section class="developer-accounts">
+        <h2>Developer Accounts</h2>
+        <ul>
+          <li>
+            <strong>GitHub:</strong>
+            <a  class="visit-link" href="https://github.com/vikash721" target="_blank">github.com/vikash721</a>
+          </li>
+          <li>
+            <strong>Linktree:</strong>
+            <a class="visit-link" href="https://vikasharma.netlify.app" target="_blank">vikasharma.netlify.app</a>
+          </li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
