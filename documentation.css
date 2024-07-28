@@ -185,7 +185,7 @@ html,body{
     }
 
     .header-items{
-        font-size: 10px;
+        font-size: small;
         font-weight: 500;
         width: 60%;
     }
