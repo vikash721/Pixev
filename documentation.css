@@ -10,9 +10,10 @@
 
 }
 
-body{
+html,body{
     font-family: "Poppins", sans-serif;
     line-height: 1.5;
+    overflow-x: hidden; 
 }
 
 
@@ -172,9 +173,29 @@ body{
 }
 
 
+@media screen and (max-width: 500px){
+    .search-result{
+        width: 100%;
+    }
+    
+    .logo img {
+        width: 60px;
+        height: auto;
+        margin: 5px 20px;
+    }
 
+    .header-items{
+        font-size: 10px;
+        font-weight: 500;
+        width: 60%;
+    }
 
+    .navbar h1{
+        
+        font-size: 1.8rem;
+    }
 
+}
 
 .doc-header {
     background-color: #f4f4f4;
