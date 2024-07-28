@@ -382,7 +382,7 @@ html,body{
     }
 
     .header-items{
-        font-size: small;
+        font-size: 10px;
         font-weight: 500;
         width: 60%;
     }
