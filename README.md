@@ -72,14 +72,5 @@ Contributions are welcome! To contribute:
 
 6. **Create a Pull Request** on GitHub.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Acknowledgements
-
-Special thanks to the contributors and the open-source community for their invaluable support.
-
----
 
 Explore Pixev at [pixev.netlify.app](https://pixev.netlify.app) and discover a world of captivating images. 
